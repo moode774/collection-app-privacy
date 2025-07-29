@@ -7,179 +7,256 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2d3748;
-            --accent-color: #4299e1;
-            --background-color: #f8fafc;
-            --gradient-start: #4299e1;
-            --gradient-end: #667eea;
+            --primary-color: #1a365d; /* لون أزرق غامق */
+            --secondary-color: #2d3748; /* لون رمادي داكن للنصوص */
+            --accent-color: #4299e1; /* لون أزرق فاتح للتأكيد */
+            --background-color: #ffffff; /* خلفية بيضاء نقية */
+            --gradient-start: #4299e1; /* بداية التدرج (لون مميز) */
+            --gradient-end: #667eea; /* نهاية التدرج (لون مميز) */
+            --border-color: #e2e8f0; /* لون حدود خفيف */
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* خط عصري وواضح */
             line-height: 1.7;
             color: var(--secondary-color);
             background-color: var(--background-color);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* لضمان تغطية الشاشة بالكامل */
         }
-        
+
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 2rem 1rem; /* تعديل البادينغ ليناسب العرض */
+            width: 100%;
+            flex-grow: 1; /* لضمان امتداد المحتوى لأسفل */
         }
-        
+
         header {
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             padding: 3rem 0;
             margin-bottom: 3rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* ظل أعمق قليلاً */
+            text-align: center;
         }
-        
+
         .header-content {
             max-width: 900px;
             margin: 0 auto;
-            padding: 0 2rem;
-            text-align: center;
+            padding: 0 1rem; /* بادينغ إضافي على الجوانب */
         }
-        
+
         h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 2.8rem; /* حجم أكبر للعناوين الرئيسية */
+            margin-bottom: 0.7rem;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* ظل أوضح */
+            font-weight: 700; /* خط عريض */
         }
-        
+
         .update-date {
             font-size: 1.1rem;
             opacity: 0.9;
+            font-weight: 500;
         }
-        
+
         h2 {
             color: var(--primary-color);
-            font-size: 1.8rem;
+            font-size: 2rem; /* حجم مناسب للعناوين الفرعية */
             margin: 2.5rem 0 1.5rem;
             padding-bottom: 0.7rem;
             border-bottom: 3px solid var(--accent-color);
             position: relative;
+            font-weight: 700;
         }
-        
+
         h2::after {
             content: '';
             position: absolute;
             bottom: -3px;
             right: 0;
-            width: 50px;
+            width: 70px; /* عرض أطول لعلامة التأكيد */
             height: 3px;
-            background-color: var(--gradient-end);
+            background: linear-gradient(to left, var(--accent-color), var(--gradient-end)); /* تدرج للعلامة */
         }
-        
+
+        h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
         p {
             margin-bottom: 1.5rem;
-            font-size: 1.1rem;
+            font-size: 1.15rem; /* حجم نص أكبر قليلاً */
+            line-height: 1.8; /* تباعد أسطر أكبر */
         }
-        
+
         ul {
             margin-bottom: 1.5rem;
             padding-right: 2rem;
         }
-        
+
         li {
             margin-bottom: 0.8rem;
             position: relative;
             padding-right: 1.5rem;
+            font-size: 1.15rem;
         }
-        
+
         li::before {
             content: '•';
             color: var(--accent-color);
             position: absolute;
             right: 0;
             font-weight: bold;
+            font-size: 1.2em; /* حجم نقطة القائمة */
         }
-        
+
         .card {
             background: white;
             border-radius: 1rem;
             padding: 2rem;
             margin: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* ظل ناعم وبارز */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color); /* إضافة حدود خفيفة */
         }
-        
+
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px); /* حركة بارزة عند التحويم */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* ظل أقوى عند التحويم */
         }
-        
+
         .highlight {
-            background: linear-gradient(to left, rgba(66, 153, 225, 0.1), rgba(102, 126, 234, 0.1));
+            background: linear-gradient(to left, rgba(66, 153, 225, 0.05), rgba(102, 126, 234, 0.05)); /* تدرج خلفية خفيف */
             padding: 2rem;
             border-radius: 1rem;
             margin: 2rem 0;
-            border-right: 4px solid var(--accent-color);
+            border-right: 5px solid var(--accent-color); /* تأكيد بصري قوي */
         }
-        
+
         .contact {
-            background: white;
+            background: #ffffff; /* خلفية بيضاء */
             padding: 2.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 1.2rem; /* زوايا دائرية أكثر */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* ظل واضح */
             margin: 3rem 0;
             text-align: center;
+            border: 1px solid var(--border-color);
         }
-        
+
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem; /* مسافة أكبر بين عناصر التواصل */
             margin-top: 2rem;
             flex-wrap: wrap;
         }
-        
+
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
+            gap: 0.7rem; /* مسافة بين الأيقونة والنص */
+            font-size: 1.15rem;
             color: var(--primary-color);
+            font-weight: 600; /* خط أثقل قليلاً */
         }
-        
+
         .contact-item i {
             color: var(--accent-color);
-            font-size: 1.3rem;
+            font-size: 1.4rem; /* حجم أكبر للأيقونة */
+            transition: transform 0.3s ease;
         }
-        
+
+        .contact-item:hover i {
+            transform: scale(1.1); /* تكبير الأيقونة عند التحويم */
+        }
+
+        /* قسم الأذونات */
+        .permissions-section .card {
+            background-color: #fdfdfd; /* خلفية أفتح قليلاً للتمييز */
+            border-left: 4px solid var(--primary-color); /* تأكيد على الجانب */
+        }
+
+        .permissions-section ul {
+            padding-right: 0; /* إزالة البادينغ هنا */
+        }
+
+        .permissions-section li {
+            padding-right: 2rem; /* مسافة مناسبة للنص */
+        }
+
+        .permissions-section li::before {
+            content: '✅'; /* علامة صح للتمييز */
+            color: var(--accent-color);
+            position: absolute;
+            right: 0;
+            font-size: 1.1em;
+        }
+
+        .permissions-section .highlight {
+            background: linear-gradient(to left, rgba(26, 54, 93, 0.05), rgba(40, 50, 70, 0.05)); /* تدرج بلون أساسي */
+            border-right: 5px solid var(--primary-color);
+        }
+
+        /* تحسينات الاستجابة */
         @media (max-width: 768px) {
             .container {
-                padding: 1rem;
+                padding: 1rem 0.8rem; /* تعديل البادينغ للموبايل */
             }
-            
+
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
-            
+
             h2 {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
             }
             
+            h3 {
+                font-size: 1.3rem;
+            }
+
+            p, li {
+                font-size: 1.1rem;
+            }
+
+            .card, .contact, .highlight {
+                padding: 1.5rem; /* تقليل البادينغ الداخلي */
+            }
+
             .contact-info {
                 flex-direction: column;
                 align-items: center;
-                gap: 1rem;
+                gap: 1.5rem;
+            }
+            
+            .contact-item {
+                font-size: 1.05rem;
+            }
+            
+            .contact-item i {
+                font-size: 1.2rem;
             }
         }
-        
+
+        /* تأثيرات التحريك (Animation) */
         .section-animation {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.6s ease forwards;
         }
-        
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -195,50 +272,67 @@
             <p class="update-date">آخر تحديث: 17 يناير 2025</p>
         </div>
     </header>
-    
+
     <main class="container">
         <section class="section-animation">
-            <h2>مرحباً بكم في تطبيق كولكشن</h2>
-            <p>نحن نقدر ثقتكم بنا ونلتزم بحماية خصوصيتكم. نسعى دائماً لضمان أمان وسرية معلوماتكم الشخصية.</p>
+            <h2>نحن نقدر خصوصيتك</h2>
+            <p>نرحب بك في تطبيق "كولكشن"، متجرنا الإلكتروني المتخصص. نحن ملتزمون تمامًا بحماية بياناتك الشخصية والحفاظ على سريتها. نهدف إلى توفير تجربة تسوق آمنة وموثوقة، وتفهمنا العميق لأهمية خصوصيتك هو جوهر عملنا.</p>
         </section>
 
         <section class="card section-animation">
             <h2>المعلومات التي نجمعها</h2>
+            <p>لضمان تقديم أفضل خدمة ممكنة وتسهيل تجربتك، قد نقوم بجمع بعض المعلومات الضرورية:</p>
             <div class="highlight">
-                <h3>معلومات التواصل الأساسية:</h3>
                 <ul>
-                    <li>رقم الهاتف المحمول للتواصل وتأكيد الطلبات</li>
-                    <li>عنوان البريد الإلكتروني لإرسال التأكيدات والتحديثات</li>
-                    <li>الموقع الحالي لتسهيل عملية التوصيل</li>
+                    <li><strong>رقم الهاتف المحمول:</strong> يستخدم بشكل أساسي للتواصل معك بشأن طلباتك، تأكيد التسجيل، وإشعارات مهمة تتعلق بالشحن أو العروض.</li>
+                    <li><strong>عنوان البريد الإلكتروني:</strong> يستخدم لإرسال تأكيدات الطلبات، فواتير الشراء، رسائل التحديثات المهمة، وأي اتصالات رسمية أخرى.</li>
+                    <li><strong>الموقع الحالي (اختياري):</strong> يمكن أن يُطلب منك مشاركة موقعك الحالي للمساعدة في تحديد أقرب فروعنا أو لتسهيل عملية التوصيل الدقيق لطلباتك، وهذا يتم بموافقتك الصريحة.</li>
                 </ul>
             </div>
         </section>
 
         <section class="card section-animation">
             <h2>كيف نستخدم معلوماتك</h2>
+            <p>نستخدم المعلومات التي تجمعها حصريًا لتحسين وتخصيص تجربتك مع تطبيق "كولكشن":</p>
             <ul>
-                <li>تسهيل عملية توصيل الطلبات</li>
-                <li>إرسال إشعارات مهمة حول طلباتك</li>
-                <li>تحسين خدماتنا وتجربة المستخدم</li>
-                <li>التواصل معك بخصوص العروض والتحديثات</li>
+                <li><strong>تسهيل عملية التوصيل:</strong> استخدام بيانات العنوان ورقم الهاتف لضمان وصول طلباتك إليك بأمان وفي الوقت المحدد.</li>
+                <li><strong>إشعارات وتحديثات مهمة:</strong> إبلاغك بحالة طلبك، أي تغييرات في المخزون، أو تحديثات أساسية في خدماتنا.</li>
+                <li><strong>تحسين تجربة المستخدم:</strong> تحليل كيفية استخدامك للتطبيق لفهم احتياجاتك وتقديم ميزات وتوصيات أفضل.</li>
+                <li><strong>التواصل والعروض:</strong> في حال موافقتك، يمكننا التواصل معك بخصوص العروض الترويجية الخاصة، الخصومات، ومنتجات جديدة قد تثير اهتمامك.</li>
+                <li><strong>عمليات الدفع الآمنة:</strong> تأمين معاملات الدفع لضمان سلامة أموالك.</li>
             </ul>
+        </section>
+        
+        <section class="card section-animation permissions-section">
+            <h2>الأذونات المطلوبة وكيفية استخدامها</h2>
+            <p>لتمكين وظائف تطبيق "كولكشن" بشكل كامل، قد نحتاج إلى بعض الأذونات من جهازك. نؤكد لك أننا نستخدم هذه الأذونات بالحد الأدنى المطلوب لتقديم الخدمة:</p>
+            <div class="highlight">
+                <ul>
+                    <li><strong>الميكروفون:</strong> في حال توفير خاصية البحث الصوتي أو المساعدة الصوتية داخل التطبيق، قد نطلب إذن استخدام الميكروفون. هذا الإذن يُستخدم فقط لتلقي أوامرك الصوتية ومعالجتها.</li>
+                    <li><strong>التخزين / الملفات:</strong> قد نحتاج إلى الوصول إلى مساحة التخزين على جهازك للسماح لك برفع صور للمنتجات التي ترغب بها، أو لإرفاق صور أثناء تقديم ملاحظاتك، شكواك، أو استفساراتك. هذا يضمن قدرتك على مشاركة المعلومات البصرية معنا بشكل فعال.</li>
+                    <li><strong>الكاميرا (اختياري):</strong> في حال توفير ميزة لمسح المنتجات ضوئيًا (QR Code) أو التقاط صور شخصية عند إنشاء الملف الشخصي، قد نطلب إذن استخدام الكاميرا.</li>
+                    <li><strong>الموقع الجغرافي:</strong> كما ذكرنا سابقًا، قد نطلب إذن الوصول إلى موقعك لتحديد الأقرب لك أو لتسهيل عملية التوصيل، وهذا يتم دائمًا بموافقتك.</li>
+                </ul>
+            </div>
+            <p>نحن لا نستخدم هذه الأذونات لأي غرض آخر غير الموضح أعلاه، ولن نشاركها مع أطراف ثالثة دون موافقتك الصريحة.</p>
         </section>
 
         <section class="card section-animation">
             <h2>حماية بياناتك</h2>
+            <p>نحن نأخذ أمان بياناتك على محمل الجد ونطبق إجراءات صارمة لضمان حمايتها:</p>
             <div class="highlight">
                 <ul>
-                    <li>تشفير جميع البيانات المنقولة</li>
-                    <li>مراقبة مستمرة لأنظمة الأمان</li>
-                    <li>تحديثات دورية لإجراءات الحماية</li>
-                    <li>فريق متخصص لضمان أمان البيانات</li>
+                    <li><strong>التشفير:</strong> يتم تشفير جميع البيانات الحساسة، بما في ذلك معلومات الدفع وبيانات تسجيل الدخول، أثناء النقل والتخزين.</li>
+                    <li><strong>مراقبة أمنية مستمرة:</strong> نراقب أنظمتنا باستمرار للكشف عن أي تهديدات أمنية محتملة والاستجابة لها بسرعة.</li>
+                    <li><strong>تحديثات أمنية دورية:</strong> نقوم بتحديث وتطوير إجراءاتنا الأمنية بانتظام لضمان مواكبتها لأحدث التهديدات.</li>
+                    <li><strong>فريق متخصص:</strong> لدينا فريق متخصص يعمل على ضمان أمان وسلامة جميع بيانات المستخدمين.</li>
                 </ul>
             </div>
         </section>
 
         <section class="contact section-animation">
             <h2>اتصل بنا</h2>
-            <p>نحن هنا لمساعدتك! إذا كان لديك أي استفسارات، يمكنك التواصل معنا عبر:</p>
+            <p>رضاكم وأمانكم هو أولويتنا. إذا كان لديك أي أسئلة، مخاوف، أو ترغب في معرفة المزيد عن سياساتنا، فلا تتردد في التواصل معنا:</p>
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
